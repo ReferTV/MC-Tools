@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+group = 'gamesmc'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    maven {
+        url = uri("https://papermc.io/repo/repository/maven-public/")
+        url = uri("")
+    }
+}
+
+dependencies {
+    compileOnly("io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT")
+}
+
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+}
+
+compileJava {
+    getOptions().setEncoding("UTF-8")
+}

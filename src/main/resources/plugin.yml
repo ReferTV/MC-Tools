@@ -1,0 +1,4 @@
+name: Tools
+version: '${version}'
+main: gamesmc.tools.Tools
+api-version: 1.18
