@@ -46,3 +46,5 @@ shadowJar {
 compileJava {
     getOptions().setEncoding("UTF-8")
 }
+
+assemble.dependsOn(shadowJar)
