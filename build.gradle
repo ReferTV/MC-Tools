@@ -1,23 +1,46 @@
 plugins {
-    id 'java'
+    id("java")
+    id("com.github.johnrengelman.shadow").version("7.1.2")
 }
 
-group = 'gamesmc'
-version = '1.0-SNAPSHOT'
+setGroup("gamesmc")
+setVersion("1.0-SNAPSHOT")
+
+java {
+    setSourceCompatibility(JavaVersion.VERSION_17)
+    setTargetCompatibility(JavaVersion.VERSION_17)
+}
 
 repositories {
+    mavenCentral()
+
     maven {
-        url = uri("https://papermc.io/repo/repository/maven-public/")
-        url = uri("")
+        setName("sonatype-repo")
+        setUrl("https://oss.sonatype.org/content/groups/public/")
+    }
+    maven {
+        setName("papermc-repo")
+        setUrl("https://papermc.io/repo/repository/maven-public/")
+    }
+    maven {
+        setName("elytrium-repo")
+        setUrl("https://maven.elytrium.net/repo/")
     }
 }
 
 dependencies {
+    implementation 'junit:junit:4.13.1'
+    implementation 'junit:junit:4.13.1'
+    implementation 'junit:junit:4.13.1'
     compileOnly("io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT")
+
+    implementation("net.elytrium:elytrium-java-commons:1.0.3")
 }
 
-java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+shadowJar {
+    getArchiveClassifier().set("")
+
+    minimize()
 }
 
 compileJava {
