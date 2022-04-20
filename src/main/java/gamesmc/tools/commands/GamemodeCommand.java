@@ -7,6 +7,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nullable;
 
 public class GamemodeCommand extends CommandBase {
 
@@ -40,11 +43,9 @@ public class GamemodeCommand extends CommandBase {
                 }
                 gracz.sendMessage(Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.GAMEMODE_CHANGE.replace("{MODE}", mode.name())));
                 gracz.setGameMode(mode);
-                gracz.sendTitle(Title.title(Tools.getSerializer().deserialize(Settings.IMP.MAIN_TITLE), Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.GAMEMODE_CHANGE.replace("{MODE}", mode.name())), 20, 20, 20));
                 return true;
             }
             p.sendMessage(Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.GAMEMODE_CHANGE.replace("{MODE}", mode.name())));
-            p.sendTitle(Title.title(Tools.getSerializer().deserialize(Settings.IMP.MAIN_TITLE), Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.GAMEMODE_CHANGE.replace("{MODE}", mode.name())), 20, 20, 20));
             p.setGameMode(mode);
             return true;
         }
