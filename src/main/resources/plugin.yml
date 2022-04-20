@@ -1,8 +1,19 @@
 name: Tools
-version: '${version}'
+version: ${pluginVersion}
 main: gamesmc.tools.Tools
 api-version: 1.18
+author: ReferTV
 description: "Tools plugin"
 
 commands:
   tools:
+  online:
+  gamemode:
+    usage: /gamemode <1/2/3>
+  crafting:
+  anvil:
+  loom:
+  grindstone:
+  stonecutter:
+  cartographytable:
+  smitchingtable:
