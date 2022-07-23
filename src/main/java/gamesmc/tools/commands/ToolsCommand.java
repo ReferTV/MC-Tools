@@ -5,14 +5,14 @@ import gamesmc.tools.Tools;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
-public class ToolsCommand extends CommandBase {
+import static gamesmc.tools.Tools.getSerializer;
 
-    private static final Tools plugin = Tools.getInstance();
+public class ToolsCommand extends CommandBase {
 
     @Override
     protected boolean onCommand(Player p, Command cmd, String label, String[] args) {
     if (args.length == 0) {
-        p.sendMessage(Tools.getSerializer().deserialize("<color:#b6eb17>This server using GamesMC Tools.</color>\n" +
+        p.sendMessage(getSerializer().deserialize("<color:#b6eb17>This server using GamesMC Tools.</color>\n" +
                 "Designed by " + Tools.getInstance().getDescription().getAuthors() + " \n" +
                 "\n" +
                 "Avaliable subcommands:\n" +
@@ -32,7 +32,7 @@ public class ToolsCommand extends CommandBase {
                     e.printStackTrace();
                 }
             } else {
-                p.sendMessage(Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.ERROR_NO_PERMISSION));
+                p.sendMessage(getSerializer().deserialize(Settings.IMP.MESSAGES.ERROR_NO_PERMISSION));
                 return false;
             }
             }
@@ -42,8 +42,11 @@ public class ToolsCommand extends CommandBase {
                 for (int i = 1; i < args.length; ++i) {
                     str.append(args[i] + " ");
                 }
-                p.sendMessage(Tools.getSerializer().deserialize(str.toString()));
+                p.sendMessage(getSerializer().deserialize(str.toString()));
             }
+        }
+        default -> {
+            p.sendMessage(getSerializer().deserialize(Settings.IMP.MESSAGES.INVALID_ARGUMENT));
         }
         }
         return false;

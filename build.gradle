@@ -26,20 +26,17 @@ repositories {
         setName("elytrium-repo")
         setUrl("https://maven.elytrium.net/repo/")
     }
+    maven { url = 'https://repo.extendedclip.com/content/repositories/placeholderapi/'}
 }
 
 dependencies {
-    implementation 'junit:junit:4.13.1'
-    implementation 'junit:junit:4.13.1'
-    implementation 'junit:junit:4.13.1'
-    compileOnly("io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT")
-
-    implementation("net.elytrium:elytrium-java-commons:1.0.3")
+    compileOnly("io.papermc.paper:paper-api:1.19-R0.1-SNAPSHOT")
+    compileOnly 'me.clip:placeholderapi:2.11.2'
+    implementation("net.elytrium:elytrium-java-commons:1.0.5")
 }
 
 shadowJar {
     getArchiveClassifier().set("")
-
     minimize()
 }
 

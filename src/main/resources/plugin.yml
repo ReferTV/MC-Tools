@@ -1,19 +1,42 @@
 name: Tools
-version: ${pluginVersion}
+version: '${project.version}'
 main: gamesmc.tools.Tools
 api-version: 1.18
 author: ReferTV
 description: "Tools plugin"
+softdepend: [PlaceholderAPI]
+
+default-permission: gamesmc.patron
 
 commands:
+  crafting:
+    aliases: [craft, workbench]
+  anvil:
+    aliases: [al, kowadlo]
+  loom:
+    aliases: [lm]
+  grindstone:
+    aliases: [gs]
+  stonecutter:
+    aliases: [sc]
+  cartographytable:
+    aliases: [ct]
+  smitchingtable:
+    aliases: [st]
+  invsee:
+    aliases: [inv, inventory]
+  ender:
+    aliases: [ec, enderchest]
   tools:
+  vanish:
   online:
   gamemode:
-    usage: /gamemode <1/2/3>
-  crafting:
-  anvil:
-  loom:
-  grindstone:
-  stonecutter:
-  cartographytable:
-  smitchingtable:
+    usage: /gamemode <0/1/2/3>
+    aliases: [gm]
+  setslots:
+  heal:
+  head:
+  fly:
+  feed:
+  time:
+  item:

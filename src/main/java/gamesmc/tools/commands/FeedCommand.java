@@ -7,7 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
-public class FoodCommand extends CommandBase {
+public class FeedCommand extends CommandBase {
 
         @Override
         protected boolean onCommand(Player p, Command cmd, String label, String[] args) {

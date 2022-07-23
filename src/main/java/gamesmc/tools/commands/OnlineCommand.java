@@ -16,7 +16,7 @@ public class OnlineCommand extends CommandBase {
         StringBuilder online = new StringBuilder();
         final Collection<? extends Player> players = Bukkit.getOnlinePlayers();
         for (Player player : players) {
-            if (p instanceof Player && !((Player) p).canSee(player))
+            if (!((Player) p).canSee(player))
                 continue;
             if (online.length() > 0) {
                 online.append(", ");

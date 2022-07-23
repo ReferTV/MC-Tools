@@ -7,17 +7,14 @@ import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
-import org.jetbrains.annotations.NotNull;
-
-import javax.annotation.Nullable;
 
 public class GamemodeCommand extends CommandBase {
-
     @Override
     protected boolean onCommand(Player p, Command cmd, String label, String[] args) {
+
         if (p.hasPermission("gamesmc.gamemode")) {
             if (args.length == 0) {
-                p.sendMessage(cmd.getUsage());
+                p.sendMessage(Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.COMMAND_SYNTAX.replace("{ARGS}", cmd.getUsage())));
                 return true;
             }
             GameMode mode = null;
@@ -35,19 +32,29 @@ public class GamemodeCommand extends CommandBase {
                 p.sendMessage(Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.INVALID_ARGUMENT));
                 return true;
             }
-            if (args.length == 2) {
+            if (args.length == 2 && p.hasPermission("gamesmc.gamemode.others")) {
                 Player gracz = Bukkit.getPlayer(args[1]);
                 if (gracz == null) {
                     p.sendMessage(Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.PLAYER_IS_OFFLINE));
                     return false;
                 }
-                gracz.sendMessage(Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.GAMEMODE_CHANGE.replace("{MODE}", mode.name())));
                 gracz.setGameMode(mode);
+                gracz.sendMessage(Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.GAMEMODE_CHANGE.replace("{MODE}", mode.name())));
+                gracz.showTitle(Title.title(
+                        Tools.getSerializer().deserialize(Settings.IMP.MAIN_TITLE),
+                        Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.GAMEMODE_CHANGE.replace("{MODE}", mode.name())),
+                        Settings.IMP.MAIN.TITLE_SETTINGS.toTimes()
+                ));
                 return true;
             }
-            p.sendMessage(Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.GAMEMODE_CHANGE.replace("{MODE}", mode.name())));
             p.setGameMode(mode);
-            return true;
+            p.sendMessage(Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.GAMEMODE_CHANGE.replace("{MODE}", mode.name())));
+            p.showTitle(Title.title(
+                    Tools.getSerializer().deserialize(Settings.IMP.MAIN_TITLE),
+                    Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.GAMEMODE_CHANGE.replace("{MODE}", mode.name())),
+                    Settings.IMP.MAIN.TITLE_SETTINGS.toTimes()
+            ));
+           return true;
         }
         return false;
     }
