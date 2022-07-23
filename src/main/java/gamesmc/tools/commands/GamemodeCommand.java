@@ -12,7 +12,7 @@ public class GamemodeCommand extends CommandBase {
     @Override
     protected boolean onCommand(Player p, Command cmd, String label, String[] args) {
 
-        if (p.hasPermission("gamesmc.gamemode")) {
+        if (p.hasPermission("tools.gamemode")) {
             if (args.length == 0) {
                 p.sendMessage(Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.COMMAND_SYNTAX.replace("{ARGS}", cmd.getUsage())));
                 return true;
@@ -32,7 +32,7 @@ public class GamemodeCommand extends CommandBase {
                 p.sendMessage(Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.INVALID_ARGUMENT));
                 return true;
             }
-            if (args.length == 2 && p.hasPermission("gamesmc.gamemode.others")) {
+            if (args.length == 2 && p.hasPermission("tools.gamemode.others")) {
                 Player gracz = Bukkit.getPlayer(args[1]);
                 if (gracz == null) {
                     p.sendMessage(Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.PLAYER_IS_OFFLINE));

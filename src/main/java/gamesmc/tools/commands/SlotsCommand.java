@@ -16,7 +16,7 @@ public class SlotsCommand extends CommandBase {
 
     @Override
     public boolean onCommand(Player p, Command cmd, String label, String[] args) {
-        if (p.hasPermission("gamesmc.slots")) {
+        if (p.hasPermission("tools.slots")) {
             if (args.length == 1) {
                 if (!SLOTS_PATTERN.matcher(args[0]).matches()) {
                     p.sendMessage(Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.ERROR_TOO_ARG_MUST_BE_INT));

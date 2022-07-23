@@ -10,14 +10,14 @@ public class FlyCommand extends CommandBase {
 
     @Override
     protected boolean onCommand(Player p, Command cmd, String label, String[] args) {
-        if (p.hasPermission("gamesmc.fly") && args.length == 0) {
+        if (p.hasPermission("tools.fly") && args.length == 0) {
             if (!p.getAllowFlight()) {
                 p.setAllowFlight(true);
             } else {
                 p.setAllowFlight(false);
             }
         }
-        if (p.hasPermission("gamesmc.fly.others") && args.length == 1) {
+        if (p.hasPermission("tools.fly.others") && args.length == 1) {
             if (Bukkit.getPlayer(args[0]) == null) {
                 p.sendMessage(Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.PLAYER_IS_OFFLINE));
             } else if (!Bukkit.getPlayer(args[0]).getAllowFlight()) {
