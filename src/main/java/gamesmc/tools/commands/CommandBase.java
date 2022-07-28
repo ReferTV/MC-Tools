@@ -15,7 +15,6 @@ public abstract class CommandBase implements CommandExecutor {
         }
         return false;
     }
-
     protected abstract boolean onCommand(Player p, Command cmd, String label, String[] args);
 
     public PluginCommand register(PluginCommand command) {

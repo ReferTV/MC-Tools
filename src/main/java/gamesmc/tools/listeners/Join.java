@@ -17,7 +17,7 @@ public class Join implements Listener {
     public void onJoin(PlayerJoinEvent e) {
         e.getPlayer().showTitle(Title.title(getSerializer().deserialize(IMP.MAIN_TITLE), getSerializer().deserialize(IMP.JOIN_SUBTITLE), IMP.MAIN.TITLE_SETTINGS.toTimes()));
         if (IMP.RANK_LOBBY_FLY) {
-            if (e.getPlayer().hasPermission("gamesmc.vip")) {
+            if (e.getPlayer().hasPermission("gamesmc.lobbyfly")) {
                 e.getPlayer().setAllowFlight(true);
                 e.getPlayer().setFlying(true);
             }
