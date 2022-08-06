@@ -18,6 +18,8 @@ public class Settings extends YamlConfig {
 
     public boolean RANK_LOBBY_FLY = false;
 
+    public boolean PREVENT_SWAPPING_TO_THE_OFFHAND = false;
+
 
     @Comment({
             "Available serializers:",
@@ -73,6 +75,8 @@ public class Settings extends YamlConfig {
         public String TIME_NIGHT = "<green>Czas na serwerze został zmieniony na noc.";
         public String TIME_LOCK = "<green>Wstrzymałeś czas na serwerze";
         public String TIME_UNLOCK = "<green>Ruszyłeś czas na serwerze";
+
+        public String PLAYER_INFO = "<green>Nazwa gracza <white>{PLAYER} <gray>»{NL}<gray>› <gray>Nazwa hosta: <gold>{host}{NL}<gray>› <gray>Client brand:<gold> {brand}{NL}<gray>› <gray>Nazwa texturepacka: <gold>{texturepack}{NL}<gray>› <gray>Render distance: <gold>{viewdistance}{NL}<gray>› <gray>Simulation distance: <gold>{simdistance}{NL}";
 
     }
 

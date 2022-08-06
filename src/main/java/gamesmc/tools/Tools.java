@@ -4,6 +4,7 @@ import gamesmc.tools.commands.*;
 import gamesmc.tools.commands.guis.*;
 import gamesmc.tools.listeners.Join;
 import gamesmc.tools.listeners.Leave;
+import gamesmc.tools.listeners.SwappingItems;
 import net.elytrium.java.commons.mc.serialization.Serializer;
 import net.elytrium.java.commons.mc.serialization.Serializers;
 import net.kyori.adventure.text.Component;
@@ -34,6 +35,7 @@ public final class Tools extends JavaPlugin {
 
         Bukkit.getPluginManager().registerEvents(new Join(), this);
         Bukkit.getPluginManager().registerEvents(new Leave(), this);
+        Bukkit.getPluginManager().registerEvents(new SwappingItems(), this);
         getLogger().info("Ładuję listenery...");
 
         ComponentSerializer<Component, Component, String> serializer = Serializers.valueOf(Settings.IMP.SERIALIZER).getSerializer();
@@ -72,6 +74,8 @@ public final class Tools extends JavaPlugin {
         new HealCommand().register(getCommand("heal"));
         new FeedCommand().register(getCommand("feed"));
         new TimeCommand().register(getCommand("time"));
+        new PlayerClientInfoCommand().register(getCommand("playerinfo"));
+
     }
 
     public void reloadPlugin() {
