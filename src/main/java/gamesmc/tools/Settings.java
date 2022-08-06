@@ -75,8 +75,9 @@ public class Settings extends YamlConfig {
         public String TIME_NIGHT = "<green>Czas na serwerze został zmieniony na noc.";
         public String TIME_LOCK = "<green>Wstrzymałeś czas na serwerze";
         public String TIME_UNLOCK = "<green>Ruszyłeś czas na serwerze";
-
         public String PLAYER_INFO = "<green>Nazwa gracza <white>{PLAYER} <gray>»{NL}<gray>› <gray>Nazwa hosta: <gold>{host}{NL}<gray>› <gray>Client brand:<gold> {brand}{NL}<gray>› <gray>Nazwa texturepacka: <gold>{texturepack}{NL}<gray>› <gray>Render distance: <gold>{viewdistance}{NL}<gray>› <gray>Simulation distance: <gold>{simdistance}{NL}";
+        public String FLY_SPEED = "Twoja prędkość latania została ustawiona na {1}";
+        public String WALK_SPEED = "Twoja prędkość chodzenia została ustawiona na {1}";
 
     }
 

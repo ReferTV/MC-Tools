@@ -75,6 +75,7 @@ public final class Tools extends JavaPlugin {
         new FeedCommand().register(getCommand("feed"));
         new TimeCommand().register(getCommand("time"));
         new PlayerClientInfoCommand().register(getCommand("playerinfo"));
+        new SpeedCommand().register(getCommand("speed"));
 
     }
 
