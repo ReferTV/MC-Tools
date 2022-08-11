@@ -40,7 +40,7 @@ public class ToolsCommand extends CommandBase {
             if (p.hasPermission("tools.parse")) {
                 StringBuilder str = new StringBuilder();
                 for (int i = 1; i < args.length; ++i) {
-                    str.append(args[i] + " ");
+                    str.append(args[i]).append(" ");
                 }
                 p.sendMessage(getSerializer().deserialize(str.toString()));
             }

@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 public class SlotsCommand extends CommandBase {
-    private static final Pattern SLOTS_PATTERN = Pattern.compile("[1-9][0-9]*");
+    private static final Pattern SLOTS_PATTERN = Pattern.compile("[1-9]\\d*");
 
     @Override
     public boolean onCommand(Player p, Command cmd, String label, String[] args) {

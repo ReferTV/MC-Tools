@@ -4,6 +4,9 @@ import net.elytrium.java.commons.config.YamlConfig;
 import net.kyori.adventure.title.Title;
 import net.kyori.adventure.util.Ticks;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Settings extends YamlConfig {
 
     @Ignore
@@ -78,7 +81,6 @@ public class Settings extends YamlConfig {
         public String PLAYER_INFO = "<green>Nazwa gracza <white>{PLAYER} <gray>»{NL}<gray>› <gray>Nazwa hosta: <gold>{host}{NL}<gray>› <gray>Client brand:<gold> {brand}{NL}<gray>› <gray>Nazwa texturepacka: <gold>{texturepack}{NL}<gray>› <gray>Render distance: <gold>{viewdistance}{NL}<gray>› <gray>Simulation distance: <gold>{simdistance}{NL}";
         public String FLY_SPEED = "Twoja prędkość latania została ustawiona na {1}";
         public String WALK_SPEED = "Twoja prędkość chodzenia została ustawiona na {1}";
-
     }
 
     @Create

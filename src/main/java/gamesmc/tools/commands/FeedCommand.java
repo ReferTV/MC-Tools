@@ -7,6 +7,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
+import java.util.Objects;
+
 public class FeedCommand extends CommandBase {
 
         @Override
@@ -16,8 +18,8 @@ public class FeedCommand extends CommandBase {
                 p.showTitle(Title.title(Tools.getSerializer().deserialize(Settings.IMP.MAIN_TITLE), Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.HEAL), Settings.IMP.MAIN.TITLE_SETTINGS.toTimes()));
             } else if (p.hasPermission("tools.food.others") && args.length == 1) {
                 if (Bukkit.getPlayer(args[0]) == null) { p.sendMessage(Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.PLAYER_IS_OFFLINE)); }
-                Bukkit.getPlayer(args[0]).setFoodLevel(20);
-                Bukkit.getPlayer(args[0]).showTitle(Title.title(Tools.getSerializer().deserialize(Settings.IMP.MAIN_TITLE), Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.HEAL), Settings.IMP.MAIN.TITLE_SETTINGS.toTimes()));
+                Objects.requireNonNull(Bukkit.getPlayer(args[0])).setFoodLevel(20);
+                Objects.requireNonNull(Bukkit.getPlayer(args[0])).showTitle(Title.title(Tools.getSerializer().deserialize(Settings.IMP.MAIN_TITLE), Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.HEAL), Settings.IMP.MAIN.TITLE_SETTINGS.toTimes()));
             }
             return true;
         }
