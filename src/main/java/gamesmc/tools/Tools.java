@@ -54,14 +54,14 @@ public final class Tools extends JavaPlugin {
 
     private void registerCommands() {
         // GUIS
-        new CraftingTable().register(getCommand("crafting"));
-        new Anvil().register(getCommand("anvil"));
-        new CartographyTable().register(getCommand("cartographytable"));
-        new SmithingTable().register(getCommand("smitchingtable"));
-        new Loom().register(getCommand("loom"));
-        new Grindstone().register(getCommand("grindstone"));
-        new Ender().register(getCommand("ender"));
-        new Invsee().register(getCommand("invsee"));
+        new GUICommand(GUICommand.Type.CRAFTING_TABLLE).register(getCommand("crafting"));
+        new GUICommand(GUICommand.Type.ENDER_CHEST).register(getCommand("ender"));
+        new GUICommand(GUICommand.Type.STONECUTTER).register(getCommand("stonecutter"));
+        new GUICommand(GUICommand.Type.SMITHING_TABLE).register(getCommand("smithingtable"));
+        new GUICommand(GUICommand.Type.GRIDSTONE).register(getCommand("gridstone"));
+        new GUICommand(GUICommand.Type.CARTOGRAPY_TABLE).register(getCommand("cartography"));
+        new GUICommand(GUICommand.Type.LOOM).register(getCommand("loom"));
+        new GUICommand(GUICommand.Type.ANVIL).register(getCommand("anvil"));
 
         //Commands
         new ToolsCommand().register(getCommand("tools"));

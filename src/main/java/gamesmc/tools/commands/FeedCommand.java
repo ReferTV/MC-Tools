@@ -11,16 +11,30 @@ import java.util.Objects;
 
 public class FeedCommand extends CommandBase {
 
-        @Override
-        protected boolean onCommand(Player p, Command cmd, String label, String[] args) {
-            if (args.length == 0 && p.hasPermission("tools.food")) {
-                p.setFoodLevel(20);
-                p.showTitle(Title.title(Tools.getSerializer().deserialize(Settings.IMP.MAIN_TITLE), Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.HEAL), Settings.IMP.MAIN.TITLE_SETTINGS.toTimes()));
-            } else if (p.hasPermission("tools.food.others") && args.length == 1) {
-                if (Bukkit.getPlayer(args[0]) == null) { p.sendMessage(Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.PLAYER_IS_OFFLINE)); }
-                Objects.requireNonNull(Bukkit.getPlayer(args[0])).setFoodLevel(20);
-                Objects.requireNonNull(Bukkit.getPlayer(args[0])).showTitle(Title.title(Tools.getSerializer().deserialize(Settings.IMP.MAIN_TITLE), Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.HEAL), Settings.IMP.MAIN.TITLE_SETTINGS.toTimes()));
+    @Override
+    protected boolean onCommand(Player p, Command cmd, String label, String[] args) {
+        if (args.length == 0 && p.hasPermission("tools.food")) {
+            p.setFoodLevel(20);
+            p.showTitle(Title.title(
+                    Tools.getSerializer().deserialize(Settings.IMP.MAIN_TITLE),
+                    Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.HEAL),
+                    Settings.IMP.MAIN.TITLE_SETTINGS.toTimes()
+            ));
+            return true;
+        } else if (args.length == 1 && p.hasPermission("tools.food.others")) {
+            Player target = Bukkit.getPlayer(args[0]);
+            if (target == null) {
+                p.sendMessage(Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.PLAYER_IS_OFFLINE));
+                return true;
             }
+            target.setFoodLevel(20);
+            target.showTitle(Title.title(
+                    Tools.getSerializer().deserialize(Settings.IMP.MAIN_TITLE),
+                    Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.HEAL),
+                    Settings.IMP.MAIN.TITLE_SETTINGS.toTimes()
+            ));
             return true;
         }
+        return false;
     }
+}

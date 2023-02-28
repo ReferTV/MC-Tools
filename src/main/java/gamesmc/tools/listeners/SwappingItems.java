@@ -8,9 +8,9 @@ import org.bukkit.event.player.PlayerSwapHandItemsEvent;
 public class SwappingItems implements Listener {
 
     @EventHandler
-    protected void onClick(PlayerSwapHandItemsEvent e) {
+    public void onPlayerSwapHandItems(PlayerSwapHandItemsEvent event) {
         if (Settings.IMP.PREVENT_SWAPPING_TO_THE_OFFHAND) {
-            e.setCancelled(true);
+            event.setCancelled(true);
         }
     }
 }

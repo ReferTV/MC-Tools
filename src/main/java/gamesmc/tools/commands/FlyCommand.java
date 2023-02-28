@@ -12,13 +12,28 @@ public class FlyCommand extends CommandBase {
 
     @Override
     protected boolean onCommand(Player p, Command cmd, String label, String[] args) {
-        if (p.hasPermission("tools.fly") && args.length == 0) {
-            p.setAllowFlight(!p.getAllowFlight());
+        if (p.hasPermission("tools.fly")) {
+            if (args.length == 0) {
+                toggleFlight(p);
+            } else if (p.hasPermission("tools.fly.others")) {
+                Player target = Bukkit.getPlayer(args[0]);
+                if (target == null) {
+                    p.sendMessage(Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.PLAYER_IS_OFFLINE));
+                } else {
+                    toggleFlight(target);
+                }
+            } else {
+                p.sendMessage(Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.COMMAND_SYNTAX.replace("{ARGS}", cmd.getUsage())));
+            }
         }
-        if (p.hasPermission("tools.fly.others") && args.length == 1) if (Bukkit.getPlayer(args[0]) == null) {
-            p.sendMessage(Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.PLAYER_IS_OFFLINE));
-        } else
-            Objects.requireNonNull(Bukkit.getPlayer(args[0])).setAllowFlight(!Objects.requireNonNull(Bukkit.getPlayer(args[0])).getAllowFlight());
-        return false;
+        return true;
+    }
+
+    private void toggleFlight(Player player) {
+        player.setAllowFlight(!player.getAllowFlight());
+        String message = player.getAllowFlight() ?
+                Settings.IMP.MESSAGES.FLY_ENABLE.replace("{PLAYER}", player.getName())
+                : Settings.IMP.MESSAGES.FLY_DISABLE.replace("{PLAYER}", player.getName());
+        player.sendMessage(Tools.getSerializer().deserialize(message));
     }
 }

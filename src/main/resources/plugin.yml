@@ -11,6 +11,8 @@ default-permission: gamesmc.patron
 commands:
   crafting:
     aliases: [craft, workbench]
+  ender:
+    aliases: [enderchest]
   anvil:
     aliases: [al, kowadlo]
   loom:
@@ -19,14 +21,14 @@ commands:
     aliases: [gs]
   stonecutter:
     aliases: [sc]
-  cartographytable:
-    aliases: [ct]
-  smitchingtable:
-    aliases: [st]
+  smithingtable:
+  gridstone:
+  cartography:
+    aliases: [ct, cartographytable]
+  smitching:
+    aliases: [st, smitchingtable]
   invsee:
     aliases: [inv, inventory]
-  ender:
-    aliases: [ec, enderchest]
   tools:
   vanish:
   online:

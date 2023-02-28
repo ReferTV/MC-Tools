@@ -6,25 +6,22 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
-import java.util.Collection;
+import java.util.stream.Collectors;
 
 public class OnlineCommand extends CommandBase {
 
     @Override
     protected boolean onCommand(Player p, Command cmd, String label, String[] args) {
-    if (p.hasPermission("tools.online")) {
-        StringBuilder online = new StringBuilder();
-        final Collection<? extends Player> players = Bukkit.getOnlinePlayers();
-        for (Player player : players) {
-            if (!((Player) p).canSee(player))
-                continue;
-            if (online.length() > 0) {
-                online.append(", ");
-            }
-            online.append(player.getDisplayName());
+        if (p.hasPermission("tools.online")) {
+            String online = Bukkit.getOnlinePlayers().stream()
+                    .filter(player -> p.canSee(player))
+                    .map(player -> player.getName())
+                    .collect(Collectors.joining(", "));
+            p.sendMessage(Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.ONLINE_COMMAND
+                    .replace("{ONLINE}", String.valueOf(Bukkit.getOnlinePlayers().size()))
+                    .replace("{MAX}", String.valueOf(Bukkit.getMaxPlayers()))
+                    .replace("{LIST}", online)));
         }
-        p.sendMessage(Tools.getSerializer().deserialize(Settings.IMP.MESSAGES.ONLINE_COMMAND.replace("{ONLINE}", String.valueOf(players.size())).replace("{LIST}", String.valueOf(online))));
-    }
-    return false;
+        return false;
     }
 }

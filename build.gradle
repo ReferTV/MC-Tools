@@ -20,7 +20,7 @@ repositories {
     }
     maven {
         setName("papermc-repo")
-        setUrl("https://papermc.io/repo/repository/maven-public/")
+        setUrl("https://repo.papermc.io/repository/maven-public/")
     }
     maven {
         setName("elytrium-repo")
@@ -30,9 +30,9 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.19.2-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.19.3-R0.1-SNAPSHOT")
     compileOnly 'me.clip:placeholderapi:2.11.2'
-    implementation("net.elytrium:elytrium-java-commons:1.0.5")
+    implementation("net.elytrium:java-commons:1.1.0-SNAPSHOT")
 }
 
 shadowJar {

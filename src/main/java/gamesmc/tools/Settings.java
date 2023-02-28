@@ -6,6 +6,7 @@ import net.kyori.adventure.util.Ticks;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Settings extends YamlConfig {
 
@@ -69,7 +70,7 @@ public class Settings extends YamlConfig {
         public String INVAILD_PLAYER_NAME = "<red>Niepoprawna nazwa gracza.";
         public String PROVIDE_PLAYER_NAME = "<red>Podaj nazwę gracza jako argument.";
         public String PLAYER_IS_OFFLINE = "<red>Ten gracz jest offline, upewnij się czy wpisałeś dobry nick.";
-        public String ONLINE_COMMAND = "<yellow>Aktualnie na serwerze jest <green>{ONLINE} <yellow>graczy online.<newline><newline><white>{LIST}";
+        public String ONLINE_COMMAND = "<yellow>Aktualnie na serwerze jest <green>{ONLINE} / {MAX} <yellow>graczy online.<newline><newline><white>{LIST}";
         public String GAMEMODE_CHANGE = "<gray>Twój tryb został zmieniony na <green>{MODE}";
         public String SLOTS_SET = "<green>Ustawiłeś liczbę slotów na <white>{SLOTS}.";
         public String HEAL = "<white>Zostałeś uleczony!";
@@ -81,11 +82,20 @@ public class Settings extends YamlConfig {
         public String PLAYER_INFO = "<green>Nazwa gracza <white>{PLAYER} <gray>»{NL}<gray>› <gray>Nazwa hosta: <gold>{host}{NL}<gray>› <gray>Client brand:<gold> {brand}{NL}<gray>› <gray>Nazwa texturepacka: <gold>{texturepack}{NL}<gray>› <gray>Render distance: <gold>{viewdistance}{NL}<gray>› <gray>Simulation distance: <gold>{simdistance}{NL}";
         public String FLY_SPEED = "Twoja prędkość latania została ustawiona na {1}";
         public String WALK_SPEED = "Twoja prędkość chodzenia została ustawiona na {1}";
+
+        public String FLY_ENABLE = "<green>Latanie zostało włączone dla {PLAYER}!</color>";
+        public String FLY_DISABLE = "<color:#ff2317>Latanie zostało wyłączone dla {PLAYER}!</color>";
     }
 
     @Create
     public JOIN_MESSAGES JOIN_MESSAGES;
     public static class JOIN_MESSAGES {
+
+//        public Map<String, String> JOIN_MESSAGES = Map.of(
+//                "VIP", "vip dolaczyl",
+//                "VIP+", "svip dolaczyl"
+//        );
+
         public String MOTD = "<white>Witaj <gold>{PLAYER} <white>na <gold>Games<white>MC<yellow>.pl{NL}" +
                 "{NL}<gradient:white:red:1>Serwer jest w trakcie przekodowywania, aby dowiedzieć się więcej, dołącz na naszego discorda " +
                 "<b><hover:show_text:'Kliknij tutaj aby dołączyć na nasz serwer discord.'>" +
